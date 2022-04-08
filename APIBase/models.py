@@ -9,6 +9,9 @@ class Standard(models.Model):
     unit = models.CharField(max_length=64, verbose_name='Единица измерения')
 
 
+    def my_func(self):
+        return f'Hello {self.originalCipherFromDocument}'
+
     def __str__(self):
         return self.searchCode
 

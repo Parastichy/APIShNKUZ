@@ -33,12 +33,16 @@ class BaseViewSet(viewsets.ModelViewSet):
 
 def index(response):
     res = Standard.objects.all()
-    data = ''
-    for item in res:
-        data += f'{item.searchCode}<br>'
-        for r in item.must.all():
+    # data = ''
+    # for item in res:
+    #     data += f'{item.searchCode}<br>'
+    #     for r in item.must.all():
+    #
+    #         data += f'{r} {r.expenditure.unit} {r.consumptionRate}<br>'
+    #     data += '<br><br><br>'
+    return render(response, 'APIBase/first_test.html', {'res': res})
 
-            data += f'{r} {r.expenditure.unit} {r.consumptionRate}<br>'
-        data += '<br><br><br>'
-        print(item.must.all())
-    return HttpResponse(data)
+
+def get_standard(response, searchCode):
+    res = Standard.objects.filter(searchCode=searchCode)
+    return render(response, 'APIBase/first_test.html', {'res': res})
