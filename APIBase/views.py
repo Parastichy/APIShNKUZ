@@ -15,7 +15,7 @@ class Base(View):
     standarts = Standard.objects.order_by('-pk')
 
     def get(self, response):
-        return render(self.request, 'first_test.html', {'data': self.standarts})
+        return render(self.request, 'full_item.html', {'data': self.standarts})
 
 
 class BaseViewSet(viewsets.ModelViewSet):
@@ -40,9 +40,9 @@ def index(response):
     #
     #         data += f'{r} {r.expenditure.unit} {r.consumptionRate}<br>'
     #     data += '<br><br><br>'
-    return render(response, 'APIBase/first_test.html', {'res': res})
+    return render(response, 'APIBase/list_norm.html', {'res': res})
 
 
 def get_standard(response, searchCode):
     res = Standard.objects.filter(searchCode=searchCode)
-    return render(response, 'APIBase/first_test.html', {'res': res})
+    return render(response, 'APIBase/full_item.html', {'res': res})

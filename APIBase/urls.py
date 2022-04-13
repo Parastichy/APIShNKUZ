@@ -9,7 +9,7 @@ router.register('API', BaseViewSet)
 urlpatterns = [
     path('', index),
     path('base/', include(router.urls)),
-    path('<str:searchCode>', get_standard),
+    path('<str:searchCode>', get_standard, name='get_standard'),
 ]
 
 

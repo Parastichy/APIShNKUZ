@@ -2,11 +2,18 @@ from django.db import models
 
 
 # Create your models here.
+from django.urls import reverse
+
+
 class Standard(models.Model):
     searchCode = models.CharField(max_length=20, unique=True, verbose_name='Шифр поисковый (уникальный)')
     originalCipherFromDocument = models.CharField(max_length=128, verbose_name='Оригинальный шифр с документа')
     name = models.CharField(max_length=255, verbose_name='Наименование')
     unit = models.CharField(max_length=64, verbose_name='Единица измерения')
+
+
+    def get_absolute_url(self):
+        return reverse('get_standard', kwargs={'searchCode': self.searchCode})
 
 
     def my_func(self):
